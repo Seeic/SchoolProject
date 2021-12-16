@@ -16,7 +16,7 @@ OCR을 이용하여 프로필에서 본인 명함을 카메라로 찍거나 올�
 
 - Backend : Spring Boot
 - Web : React
-- App : React Native 을 이용할 것이다.
+- App : React Native 
 
 ### Navigation
 
