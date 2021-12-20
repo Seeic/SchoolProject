@@ -8,6 +8,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
+import Login from "../screens/Login";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import Chatting from "../screens/Chatting";
@@ -106,6 +107,14 @@ function BottomTabNavigator() {
         component={Chatting}
         options={{
           title: "채팅",
+          tabBarIcon: ({ color }) => <TabBarIcon name="wechat" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabThree"
+        component={Login}
+        options={{
+          title: "Login",
           tabBarIcon: ({ color }) => <TabBarIcon name="wechat" color={color} />,
         }}
       />
