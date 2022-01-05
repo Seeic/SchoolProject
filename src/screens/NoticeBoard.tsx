@@ -1,38 +1,99 @@
 import React from "react";
-import { StyleSheet } from "react-native";
-import { Text, View } from "../components/Themed";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  SectionList,
+  StatusBar,
+  TouchableOpacity,
+} from "react-native";
+import { BoardProps } from "../types";
 
-function NoticeBoard() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        NoticeBoard 스터디 / 프로젝트모집 / 멘토링 / 취업정보공유 / 학교정보공유
-        / 책나눔
-      </Text>
+// react-navigation 을 통하여 화면 이동을 하는 interface
 
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-    </View>
-  );
-}
+const DATA = [
+  {
+    title: "스터디",
+    data: ["Pizza", "Burger", "Risotto"],
+  },
+  {
+    title: "프로젝트모집",
+    data: ["French Fries", "Onion Rings", "Fried Shrimps"],
+  },
+  {
+    title: "멘토링",
+    data: ["Water", "Coke", "Beer"],
+  },
+  {
+    title: "취업정보공유",
+    data: ["취업정보", "이직 정보"],
+  },
+  {
+    title: "학교정보공유",
+    data: ["꿀팁", "어떤꿀팁?"],
+  },
+  {
+    title: "책나눔",
+    data: ["C++", "React"],
+  },
+];
+type ItemType = {
+  title: string;
+};
+
+const Item = ({ title }: ItemType) => (
+  <View style={styles.item}>
+    <TouchableOpacity
+      onPressOut={() => {
+        console.log("이걸 어떻게 navigation을 전달할까?...");
+      }}
+    >
+      <Text style={styles.title}>{title}</Text>
+    </TouchableOpacity>
+  </View>
+);
+
+const NoticeBoard = ({ navigation }: BoardProps) => (
+  <SafeAreaView style={styles.container}>
+    <SectionList
+      sections={DATA}
+      keyExtractor={(item, index) => item + index}
+      renderItem={({ item }) => <Item title={item} />}
+      renderSectionHeader={({ section: { title } }) => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Chatting");
+          }}
+        >
+          <Text style={styles.header}>{title}</Text>
+        </TouchableOpacity>
+      )}
+    />
+  </SafeAreaView>
+);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: StatusBar.currentHeight,
+    marginHorizontal: 16,
+  },
+  item: {
+    backgroundColor: "#FFFAFA",
+
+    borderRadius: 3,
+    borderWidth: 0.7,
+  },
+  header: {
+    fontSize: 32,
+    color: "black",
+    marginTop: 15,
+    backgroundColor: "#F6D8CE",
+    borderRadius: 10,
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+    fontSize: 16,
   },
 });
 

@@ -1,19 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import * as React from 'react';
-import { Platform, StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { StatusBar } from "expo-status-bar";
+import * as React from "react";
+import {
+  Text,
+  View,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 export default function ModalScreen() {
+  const PageNavigation = () => {
+    console.log("page move");
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/ModalScreen.tsx" />
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      <TouchableOpacity style={styles.touch} onPress={PageNavigation}>
+        <Text style={styles.title}>스터디</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.touch} onPress={PageNavigation}>
+        <Text style={styles.title}>프로젝트 모집</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.touch} onPress={PageNavigation}>
+        <Text style={styles.title}>멘토링</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.touch} onPress={PageNavigation}>
+        <Text style={styles.title}>취업정보공유</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.touch} onPress={PageNavigation}>
+        <Text style={styles.title}>학교정보 공유</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.touch} onPress={PageNavigation}>
+        <Text style={styles.title}>책나눔</Text>
+      </TouchableOpacity>
+      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
     </View>
   );
 }
@@ -21,16 +41,20 @@ export default function ModalScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "flex-start",
+    justifyContent: "center",
+    backgroundColor: "#ADD8E6",
+  },
+  touch: {
+    borderWidth: 1,
+    width: "100%",
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    fontSize: 32,
+    fontWeight: "bold",
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    marginTop: 20,
   },
 });

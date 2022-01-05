@@ -19,7 +19,6 @@ OCR을 이용하여 프로필에서 본인 명함을 카메라로 찍거나 올�
   <<<<<<< HEAD
 - # App : React Native
 - App : React Native
-  > > > > > > > fc223de32671d13e353e59aa323b8a1e94820aaf
 
 ### Navigation
 
