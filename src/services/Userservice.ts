@@ -1,8 +1,10 @@
 import axios from "axios";
-import { SinginType } from "types";
+import { SinginType } from "types/AuthType";
 
 // API 주소
 const USER_API_URL = "";
+
+// token은 storage에 저장할 문자
 interface LoginResType {
   token: string;
 }

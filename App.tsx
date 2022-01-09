@@ -1,24 +1,25 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Provider } from "react-redux";
-import create from "./src/redux/create";
 import useCachedResources from "./src/hooks/useCachedResources";
 import useColorScheme from "./src/hooks/useColorScheme";
-import Navigation from "./src/navigation";
+import RootNavigations from "./src/navigation/RootNavigation";
+import mocktest from "./src/mocks/mockServer";
+import { RecoilRoot } from "recoil";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
-  const store = create();
+
+  mocktest();
   if (!isLoadingComplete) {
     return null;
   } else {
     return (
       <SafeAreaProvider>
-        <Provider store={store}>
-          <Navigation colorScheme={colorScheme} />
-        </Provider>
+        <RecoilRoot>
+          <RootNavigations colorScheme={colorScheme} />
+        </RecoilRoot>
         <StatusBar />
       </SafeAreaProvider>
     );

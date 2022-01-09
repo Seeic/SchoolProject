@@ -7,27 +7,26 @@
 import { LinkingOptions } from "@react-navigation/native";
 import * as Linking from "expo-linking";
 
-import { RootStackParamList } from "../types";
+import { RootStackParamList } from "../types/NavigationType";
 
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl("/")],
   config: {
     screens: {
-      Root: {
+      Study: "Study",
+      Project: "Project",
+      Mentoring: "Mentoring",
+      Employment: "Employment",
+      Information: "Information",
+      BookSharing: "undefined",
+      Auth: "Auth",
+      Main: {
         screens: {
-          Board: {
-            screens: {
-              TabOneScreen: "one",
-            },
-          },
-          Chatting: {
-            screens: {
-              TabTwoScreen: "two",
-            },
-          },
+          Chatting: "Chatting",
+          Profile: "Profile",
+          SimpleBoard: "SimpleBoard",
         },
       },
-      BoardList: "modal",
     },
   },
 };

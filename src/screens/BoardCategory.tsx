@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function ModalScreen() {
+export default function BoardCategory() {
   const PageNavigation = () => {
     console.log("page move");
   };

@@ -1,14 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "jsx": "react-native",
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -18,11 +15,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "baseUrl": "src"
+    "baseUrl": "./src",
+    "paths": {
+      "constant/*": ["./constant/*"],
+      "containers/*": ["./containers/*"],
+      "hooks/*": ["./hooks/*"],
+      "navigation/*": ["./navigation/*"],
+      "redux/*": ["./redux/*"],
+      "screens/*": ["./screens/*"],
+      "services/*": ["./services/*"]
+    }
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "extends": "expo/tsconfig.base"
 }

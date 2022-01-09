@@ -8,7 +8,6 @@ import {
   StatusBar,
   TouchableOpacity,
 } from "react-native";
-import { BoardProps } from "../types";
 
 // react-navigation 을 통하여 화면 이동을 하는 interface
 
@@ -54,7 +53,7 @@ const Item = ({ title }: ItemType) => (
   </View>
 );
 
-const NoticeBoard = ({ navigation }: BoardProps) => (
+const SimpleBoard = () => (
   <SafeAreaView style={styles.container}>
     <SectionList
       sections={DATA}
@@ -63,7 +62,7 @@ const NoticeBoard = ({ navigation }: BoardProps) => (
       renderSectionHeader={({ section: { title } }) => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Chatting");
+            // navigation.navigate("Board");
           }}
         >
           <Text style={styles.header}>{title}</Text>
@@ -97,4 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NoticeBoard;
+export default SimpleBoard;

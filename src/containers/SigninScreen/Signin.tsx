@@ -11,15 +11,15 @@ import {
   TextInputState,
   TextInputComponent,
 } from "react-native";
-import { login } from "../redux/auth";
-import { SigninNavigation, SinginType } from "types";
+import { ProfileNavigation } from "types/NavigationType";
+import { SinginType } from "types/AuthType";
 
 interface SigninProps {
-  navigation: ReactNode | SigninNavigation;
+  navigation: ReactNode | ProfileNavigation;
   login: (reqData: SinginType) => void;
 }
 
-const Signin: React.FC<SigninProps> = ({ login, navigation }) => {
+const Signin: React.FC = () => {
   const idRef = useRef<TextInput>(null);
   const pwdRef = useRef<TextInput>(null);
   const [inputId, ChangeId] = useState("");
@@ -31,8 +31,6 @@ const Signin: React.FC<SigninProps> = ({ login, navigation }) => {
     // {
     //   inputPwd.length <= 7 ? undefined : pwdRef.current?.focus();
     // }
-
-    login({ id: inputId, password: inputPwd });
   };
 
   return (
@@ -41,14 +39,16 @@ const Signin: React.FC<SigninProps> = ({ login, navigation }) => {
         style={styles.input}
         ref={idRef}
         onChangeText={ChangeId}
+        onBlur={() => console.log("ddd")}
         autoFocus={true}
         maxLength={8}
-        keyboardType="phone-pad"
+        keyboardType="email-address"
         placeholder="학번"
       />
       <TextInput
         style={styles.input}
         ref={pwdRef}
+        blurOnSubmit={true}
         onChangeText={ChangePwd}
         secureTextEntry={true}
         keyboardType="number-pad"
