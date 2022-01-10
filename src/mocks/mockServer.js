@@ -9,18 +9,11 @@ export default function mocktest() {
 
   window.server = createServer({
     routes() {
-      this.get("/api/auth", () => {
-        return {
-          auth: [
-            { id: 1, password: "123", name: "환자", position: "student" },
-            { id: 2, password: "123", name: "환자2", postion: "graduate" },
-            { id: 3, password: "123", name: "환자3", position: "professor" },
-          ],
-        };
+      this.post("/api/auth", (request) => {
+        console.log(request);
+        return { auth: "123" };
       });
-    },
-    routes() {
-      this.post("/api/BookSharingBoard", () => {
+      this.get("/api/BookSharingBoard", () => {
         return {
           BookSharing: [
             {
@@ -89,9 +82,7 @@ export default function mocktest() {
           ],
         };
       });
-    },
-    routes() {
-      this.post("/api/InformationBoard", () => {
+      this.get("/api/InformationBoard", () => {
         return {
           Information: [
             {
@@ -160,9 +151,8 @@ export default function mocktest() {
           ],
         };
       });
-    },
-    routes() {
-      this.post("/api/EmploymentBoard", () => {
+
+      this.get("/api/EmploymentBoard", () => {
         return {
           Employment: [
             {
@@ -231,9 +221,8 @@ export default function mocktest() {
           ],
         };
       });
-    },
-    routes() {
-      this.post("/api/MentoringBoard", () => {
+
+      this.get("/api/MentoringBoard", () => {
         return {
           Mentoring: [
             {
@@ -302,9 +291,7 @@ export default function mocktest() {
           ],
         };
       });
-    },
-    routes() {
-      this.post("/api/ProjectBoard", () => {
+      this.get("/api/ProjectBoard", () => {
         return {
           Project: [
             {
@@ -373,9 +360,7 @@ export default function mocktest() {
           ],
         };
       });
-    },
-    routes() {
-      this.post("/api/Studyboard", () => {
+      this.get("/api/Studyboard", () => {
         return {
           Studyboard: [
             {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,6 +8,7 @@ import {
   StatusBar,
   TouchableOpacity,
 } from "react-native";
+import { boardRequest } from "services/Request";
 
 // react-navigation 을 통하여 화면 이동을 하는 interface
 
@@ -44,8 +45,8 @@ type ItemType = {
 const Item = ({ title }: ItemType) => (
   <View style={styles.item}>
     <TouchableOpacity
-      onPressOut={() => {
-        console.log("이걸 어떻게 navigation을 전달할까?...");
+      onPressOut={(title) => {
+        console.log(`이걸 어떻게 navigation을 전달할까?...${title.type}`);
       }}
     >
       <Text style={styles.title}>{title}</Text>
@@ -53,24 +54,30 @@ const Item = ({ title }: ItemType) => (
   </View>
 );
 
-const SimpleBoard = () => (
-  <SafeAreaView style={styles.container}>
-    <SectionList
-      sections={DATA}
-      keyExtractor={(item, index) => item + index}
-      renderItem={({ item }) => <Item title={item} />}
-      renderSectionHeader={({ section: { title } }) => (
-        <TouchableOpacity
-          onPress={() => {
-            // navigation.navigate("Board");
-          }}
-        >
-          <Text style={styles.header}>{title}</Text>
-        </TouchableOpacity>
-      )}
-    />
-  </SafeAreaView>
-);
+const SimpleBoard = () => {
+  useEffect(() => {}, []);
+  return (
+    <SafeAreaView style={styles.container}>
+      <SectionList
+        sections={DATA}
+        keyExtractor={(item, index) => item + index}
+        renderItem={({ item }) => <Item title={item} />}
+        renderSectionHeader={({ section: { title } }) => (
+          <TouchableOpacity
+            onPress={() => {
+              // async () => {
+              // const result = await boardRequest("auth");
+              // console.log(`result${result}`);
+              console.log("이동");
+            }}
+          >
+            <Text style={styles.header}>{title}</Text>
+          </TouchableOpacity>
+        )}
+      />
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

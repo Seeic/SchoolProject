@@ -11,8 +11,12 @@ import {
   TextInputState,
   TextInputComponent,
 } from "react-native";
-import { ProfileNavigation } from "types/NavigationType";
+import { ProfileNavigation, RootNavigationParams } from "types/NavigationType";
 import { SinginType } from "types/AuthType";
+import { useRecoilState } from "recoil";
+import { authState } from "RecoilStates/AuthState";
+import { useNavigation } from "@react-navigation/native";
+import { authRequest } from "services/Request";
 
 interface SigninProps {
   navigation: ReactNode | ProfileNavigation;
@@ -22,8 +26,10 @@ interface SigninProps {
 const Signin: React.FC = () => {
   const idRef = useRef<TextInput>(null);
   const pwdRef = useRef<TextInput>(null);
-  const [inputId, ChangeId] = useState("");
-  const [inputPwd, ChangePwd] = useState("");
+  const navigation = useNavigation<RootNavigationParams>();
+  const [auth, setAuth] = useRecoilState(authState);
+  const [id, ChangeId] = useState("");
+  const [password, ChangePwd] = useState("");
   const onLoginSubmit = () => {
     // {
     //   inputId.length === 8 ? undefined : idRef.current?.focus();
@@ -31,6 +37,9 @@ const Signin: React.FC = () => {
     // {
     //   inputPwd.length <= 7 ? undefined : pwdRef.current?.focus();
     // }
+    authRequest({ id, password });
+    setAuth((state) => !state);
+    navigation.navigate("SimpleBoard");
   };
 
   return (
@@ -42,7 +51,7 @@ const Signin: React.FC = () => {
         onBlur={() => console.log("ddd")}
         autoFocus={true}
         maxLength={8}
-        keyboardType="email-address"
+        keyboardType="number-pad"
         placeholder="학번"
       />
       <TextInput

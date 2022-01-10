@@ -13,7 +13,7 @@ import Board from "containers/BoardScreen/Board";
 import MainNavigation from "./MainNavigation";
 import { useRecoilValue } from "recoil";
 import { authState } from "RecoilStates/AuthState";
-import SimpleBoard from "screens/SimpleBoard";
+import SimpleBoard from "containers/BoardScreen/SimpleBoard";
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 

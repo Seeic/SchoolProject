@@ -3,12 +3,11 @@ import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import useColorScheme from "hooks/useColorScheme";
 import { Keyboard, Pressable } from "react-native";
-import Chatting from "screens/Chatting";
 import { MainTabParamList, RootTabScreenProps } from "types/NavigationType";
 import Signin from "containers/SigninScreen/Signin";
-import BoardCatalogue from "screens/BoardCategory";
-import SimpleBoard from "screens/SimpleBoard";
+import SimpleBoard from "containers/BoardScreen/SimpleBoard";
 import Profile from "containers/ProfileScreen/Profile";
+import Chatting from "containers/ChattingScreen/Chatting";
 const tintColorLight = "#2f95dc";
 const tintColorDark = "#fff";
 
