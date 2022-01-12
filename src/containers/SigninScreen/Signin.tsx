@@ -14,7 +14,7 @@ import {
 import { ProfileNavigation, RootNavigationParams } from "types/NavigationType";
 import { SinginType } from "types/AuthType";
 import { useRecoilState } from "recoil";
-import { authState } from "RecoilStates/AuthState";
+// import { authState } from "RecoilStates/AuthState";
 import { useNavigation } from "@react-navigation/native";
 import { authRequest } from "services/Request";
 
@@ -27,7 +27,7 @@ const Signin: React.FC = () => {
   const idRef = useRef<TextInput>(null);
   const pwdRef = useRef<TextInput>(null);
   const navigation = useNavigation<RootNavigationParams>();
-  const [auth, setAuth] = useRecoilState(authState);
+  // const [auth, setAuth] = useRecoilState(authState);
   const [id, ChangeId] = useState("");
   const [password, ChangePwd] = useState("");
   const onLoginSubmit = () => {
@@ -37,8 +37,9 @@ const Signin: React.FC = () => {
     // {
     //   inputPwd.length <= 7 ? undefined : pwdRef.current?.focus();
     // }
-    authRequest({ id, password });
-    setAuth((state) => !state);
+    authRequest();
+    console.log("ghgh");
+    // setAuth((state) => !state);
     navigation.navigate("SimpleBoard");
   };
 

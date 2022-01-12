@@ -1,10 +1,11 @@
 import axios from "axios";
 import { SinginType } from "types/AuthType";
+// dotenv.config();
 
 export const boardRequest = async (title: string) => {
   let temp;
   const result = await axios
-    .get(`/api/${title}`)
+    .get(`${process.env.API_HOST}/auth.json`)
     .then((response) => {
       temp = response.data.auth;
     })
@@ -19,48 +20,66 @@ export const boardRequest = async (title: string) => {
 // API 들이 나눠져있는지 하나의 보드에 필터링할 수 있는 구분자가 있어야한다.
 export const simpleBoardRequest = async () => {
   const Information = await axios
-    .get(`/api/InformationBoard`)
+    .get(`${process.env.API_URL}/InformationBoard.json`)
     .then((response) => {
       const title = response.data.title;
       const content = response.data?.contents;
       const time = response.data?.time;
     });
   console.log(Information);
-  const BookSharing = axios.get(`/api/BookSharingBoard`).then((response) => {
-    const title = response.data.title;
-    const content = response.data?.contents;
-    const time = response.data?.time;
-  });
-  const EmploymentBoard = axios.get(`/api/EmploymentBoard`).then((response) => {
-    const title = response.data.title;
-    const content = response.data?.contents;
-    const time = response.data?.time;
-  });
-  const Mentoring = axios.get(`/api/MentoringBoard`).then((response) => {
-    const title = response.data.title;
-    const content = response.data?.contents;
-    const time = response.data?.time;
-  });
-  const Project = axios.get(`/api/ProjectBoard`).then((response) => {
-    const title = response.data.title;
-    const content = response.data?.contents;
-    const time = response.data?.time;
-  });
-  const Study = axios.get(`/api/Studyboard`).then((response) => {
-    const title = response.data.title;
-    const content = response.data?.contents;
-    const time = response.data?.time;
-  });
+  const BookSharing = axios
+    .get(`${process.env.API_URL}/BookSharingBoard.json`)
+    .then((response) => {
+      const title = response.data.title;
+      const content = response.data?.contents;
+      const time = response.data?.time;
+    });
+  const EmploymentBoard = axios
+    .get(`${process.env.API_URL}/EmploymentBoard.json`)
+    .then((response) => {
+      const title = response.data.title;
+      const content = response.data?.contents;
+      const time = response.data?.time;
+    });
+  const Mentoring = axios
+    .get(`${process.env.API_URL}/MentoringBoard.json`)
+    .then((response) => {
+      const title = response.data.title;
+      const content = response.data?.contents;
+      const time = response.data?.time;
+    });
+  const Project = axios
+    .get(`${process.env.API_URL}/ProjectBoard.json`)
+    .then((response) => {
+      const title = response.data.title;
+      const content = response.data?.contents;
+      const time = response.data?.time;
+    });
+  const Study = axios
+    .get(`${process.env.API_URL}/StudyBoard.json`)
+    .then((response) => {
+      const title = response.data.title;
+      const content = response.data?.contents;
+      const time = response.data?.time;
+    });
 };
 
 interface LoginResType {
+  id: string;
+  password: number;
   token: string;
 }
+interface Auth {
+  Auth: LoginResType;
+}
 
-export const authRequest = async ({ id, password }: SinginType) => {
+export const authRequest = async () => {
   const authReq = await axios
-    .post<LoginResType>("/api/auth", { id, password })
-    .then(() => {})
+    .get<Auth>(`${process.env.API_URL}/auth.json`)
+    .then((response) => {
+      console.log(process.env.API_HOST);
+      console.log(response.data?.Auth);
+    })
     .catch((error) => {
       console.log(error);
     });

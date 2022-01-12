@@ -3,7 +3,7 @@ import Signin from "containers/SigninScreen/Signin";
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import { useSetRecoilState } from "recoil";
-import { authState } from "RecoilStates/AuthState";
+// import { authState } from "RecoilStates/AuthState";
 import { RootNavigationParams } from "types/NavigationType";
 
 export default function Auth() {

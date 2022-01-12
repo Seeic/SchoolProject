@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { authRequest } from "services/Request";
 
 export default function Profile() {
   return (
