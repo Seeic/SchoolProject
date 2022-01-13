@@ -1,0 +1,9 @@
+export { default as BirthdayInput } from "./Board";
+export { default as BookSharing } from "./BookSharing";
+export { default as Employment } from "./Employment";
+export { default as Information } from "./Information";
+export { default as Mentoring } from "./Mentoring";
+export { default as Project } from "./Project";
+export { default as SimpleBoard } from "./SimpleBoard";
+export { default as Study } from "./Study";
+export { default as Board } from "./Board";
