@@ -11,17 +11,12 @@ import {
   TextInputState,
   TextInputComponent,
 } from "react-native";
-import { ProfileNavigation, RootNavigationParams } from "types/NavigationType";
-import { SinginType } from "types/AuthType";
+import { RootNavigationParams } from "types/NavigationType";
 import { useRecoilState } from "recoil";
 import { authState } from "RecoilStates/AuthState";
 import { useNavigation } from "@react-navigation/native";
-import { authRequest } from "services/Request";
-
-interface SigninProps {
-  navigation: ReactNode | ProfileNavigation;
-  login: (reqData: SinginType) => void;
-}
+import { authRequest } from "services/BoardService";
+import { backgroundColors } from "constant/Colors";
 
 const Signin: React.FC = () => {
   const idRef = useRef<TextInput>(null);
@@ -75,7 +70,7 @@ const Signin: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E6E6FA",
+    backgroundColor: backgroundColors,
     paddingTop: StatusBar.currentHeight,
     justifyContent: "center",
     alignItems: "center",

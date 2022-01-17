@@ -53,21 +53,6 @@ function MainNavigation() {
         options={({ navigation }: RootTabScreenProps<"SimpleBoard">) => ({
           title: "게시판",
           tabBarIcon: ({ color }) => <TabBarIcon name="book" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => console.log("hho")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="list"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
         })}
       />
       <BottomTab.Screen
